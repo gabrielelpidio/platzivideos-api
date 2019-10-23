@@ -1,4 +1,5 @@
 const express = require('express');
+const helmet = require('helmet');
 const debug = require('debug')('app:server');
 const app = express();
 
@@ -11,6 +12,9 @@ const {
   wrapErrors
 } = require('./utils/middleware/errorHandlers');
 const notFoundHandler = require('./utils/middleware/notFoundHandler');
+
+//Securing middleware
+app.use(helmet());
 
 //body parser
 app.use(express.json());
